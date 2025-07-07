@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academia de Socios 4.0: El Plan Maestro de Expansión</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========== SISTEMA DE DISEÑO Y BRANDING ========== */
+        :root {
+            --primary: #0d1b2a;
+            --secondary: #415a77;
+            --accent: #e0b1cb;
+            --accent-light: rgba(224, 177, 203, 0.1);
+            --bg-light: #f8f9fa;
+            --bg-dark: #0a1421;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --border-light: rgba(129, 150, 179, 0.2);
+            --gradient-accent: linear-gradient(135deg, #e0b1cb 0%, #c497b2 100%);
+            --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --shadow-strong: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========== ESTRUCTURA Y CONTENEDORES ========== */
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .header h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            color: white;
+            margin: 0;
+        }
+
+        .header .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 1rem auto 0 auto;
+        }
+        
+        .module {
+            margin-top: 3rem;
+            background-color: var(--primary);
+            border-radius: 24px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-strong);
+            overflow: hidden;
+        }
+        
+        .module-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .module-header h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+            margin: 0;
+        }
+
+        .module-content {
+            padding: 2rem;
+        }
+
+        /* ========== COMPONENTE INTERACTIVO DESPLEGABLE (ACORDEÓN) ========== */
+        .interactive-trigger {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 1.25rem;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .interactive-trigger:hover {
+            background-color: var(--accent-light);
+        }
+        
+        .interactive-trigger:last-of-type {
+            border-bottom: none;
+        }
+
+        .icon-toggle {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            margin-left: 1rem;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            color: var(--accent);
+        }
+        
+        .interactive-trigger.active .icon-toggle {
+            transform: rotate(45deg);
+        }
+
+        .interactive-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, opacity 0.4s ease-out, padding 0.5s ease-out;
+            background-color: var(--bg-dark);
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+        
+        .interactive-content.is-open {
+            opacity: 1;
+            max-height: 2000px; /* Suficientemente grande para el contenido */
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .interactive-content p, .interactive-content ul {
+            margin-top: 0;
+            margin-bottom: 1em;
+        }
+        
+        .interactive-content strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        .interactive-content ul {
+            padding-left: 1.5rem;
+            list-style-type: '✓ ';
+        }
+
+        /* ========== TABLA DE LÉXICO ========== */
+        .lexicon-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+        }
+        .lexicon-table th, .lexicon-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .lexicon-table th {
+            font-weight: 700;
+            color: white;
+            background-color: var(--secondary);
+        }
+        .lexicon-table .term-avoid {
+            color: #ff8c8c;
+            text-decoration: line-through;
+        }
+        .lexicon-table .term-professional {
+            color: #a7f3d0;
+            font-weight: 600;
+        }
+        
+        .cite {
+            font-size: 0.7rem;
+            color: var(--accent);
+            font-weight: 600;
+            vertical-align: super;
+            margin-left: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+            <h1>Academia de Socios 4.0</h1>
+            <p class="subtitle">El Plan Maestro de Expansión. Una plataforma diseñada para reconfigurar su mentalidad, empoderar su comunicación y acelerar sus resultados.</p>
+        </header>
+
+        <main>
+            <div class="module">
+                <div class="module-header">
+                    <h2>Módulo 1: La Arquitectura de la Confianza (El Porqué)</h2>
+                </div>
+                
+                <button class="interactive-trigger" aria-expanded="false">
+                    <span>1.1. Decodificando el Cerebro: Emoción > Lógica</span>
+                    <svg class="icon-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                </button>
+                <div class="interactive-content">
+                    [cite_start]<p>El paradigma fundamental es que las decisiones humanas, especialmente las que implican confianza e inversión, no son puramente racionales[cite: 168, 170]. [cite_start]Son validaciones emocionales que justificamos con lógica después[cite: 169].</p>
+                    [cite_start]<p>La percepción negativa del "multinivel" es una barrera emocional, no lógica[cite: 171]. [cite_start]Intentar superarla solo con datos es una estrategia defectuosa; es como <strong>"llevar una hoja de cálculo a una batalla de percepciones"</strong>[cite: 172, 173].</p>
+                    [cite_start]<p><strong>Herramienta de Poder: La Narrativa.</strong> Las historias son excepcionalmente potentes porque desencadenan empatía a través de las "neuronas espejo" y suprimen las defensas del prospecto contra la persuasión[cite: 175, 176, 177]. [cite_start]Esto crea "acoplamiento neural", donde el cerebro del oyente se sincroniza con el del narrador, creando una sensación de experiencia compartida[cite: 178].</p>
+                </div>
+
+                <button class="interactive-trigger" aria-expanded="false">
+                    <span>1.2. La Neurociencia de la Confianza: Generando Oxitocina</span>
+                    <svg class="icon-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                </button>
+                <div class="interactive-content">
+                    [cite_start]<p>La confianza no es abstracta, es un estado biológico medible[cite: 183]. [cite_start]El neuroeconomista Paul J. Zak identificó la <strong>Oxitocina</strong> como la "hormona de la confianza"[cite: 184]. [cite_start]Su liberación en el cerebro reduce el miedo natural a confiar, lo que la convierte en nuestro objetivo neuroquímico más importante[cite: 185].</p>
+                    <p><strong>Disparadores Éticos de Oxitocina:</strong></p>
+                    <ul>
+                        [cite_start]<li><strong>Narrativa Empática:</strong> Las historias poderosas que muestran vulnerabilidad, lucha y superación son un desencadenante directo de oxitocina[cite: 189, 191].</li>
+                        [cite_start]<li><strong>Autenticidad y Consistencia:</strong> La honestidad y la coherencia en el mensaje crean un entorno de seguridad psicológica que fomenta la liberación de oxitocina[cite: 193, 194].</li>
+                        [cite_start]<li><strong>Gestos de Generosidad:</strong> Ofrecer valor sin compromiso, como una consulta estratégica, activa el principio de reciprocidad y fomenta la confianza[cite: 195].</li>
+                    </ul>
+                </div>
+
+                <button class="interactive-trigger" aria-expanded="false">
+                    <span>1.3. Las 7 Palancas de Influencia de Cialdini</span>
+                    <svg class="icon-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                </button>
+                <div class="interactive-content">
+                    [cite_start]<p>Los principios de Robert Cialdini son "atajos" cognitivos que el cerebro usa para decidir eficientemente[cite: 199]. [cite_start]Nuestro objetivo es alinear éticamente la oportunidad con estos procesos mentales[cite: 201].</p>
+                    <ul>
+                        [cite_start]<li><strong>Autoridad y Simpatía:</strong> Tu estatus de Diamante y experiencia establecen Autoridad[cite: 203]. [cite_start]La Simpatía se genera al encontrar puntos en común y demostrar interés genuino[cite: 205].</li>
+                        [cite_start]<li><strong>Prueba Social:</strong> Crucial para la legitimidad[cite: 208]. [cite_start]Destacar los millones de socios y la presencia en más de 65 países crea una sensación de "mentalidad de rebaño" que transmite seguridad[cite: 210].</li>
+                        [cite_start]<li><strong>Reciprocidad:</strong> Al ofrecer tu tiempo y experiencia como una "mirada exclusiva", creas una obligación subconsciente de recibir una escucha atenta[cite: 211, 212, 214].</li>
+                        [cite_start]<li><strong>Compromiso y Coherencia:</strong> Obtén pequeños "síes" a preguntas como "¿Estarías de acuerdo en que depender de una sola fuente de ingresos es riesgoso?"[cite: 216, 217].</li>
+                        [cite_start]<li><strong>Escasez:</strong> El recurso escaso no es Gano Excel, es <strong>la oportunidad de asociarse directamente contigo</strong>, un líder Diamante, en este momento de expansión[cite: 220, 221].</li>
+                        [cite_start]<li><strong>Unidad:</strong> Usa un lenguaje de "nosotros" ("personas como nosotros, que valoramos...") para crear una identidad compartida y un vínculo de tribu[cite: 222, 223].</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-header">
+                    <h2>Módulo 2: El Nuevo Lenguaje de la Oportunidad (El Qué)</h2>
+                </div>
+                
+                <button class="interactive-trigger" aria-expanded="false">
+                    <span>2.1. El Socio: "Socio Estratégico Global"</span>
+                    <svg class="icon-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                </button>
+                <div class="interactive-content">
+                     [cite_start]<p>El lenguaje para describir a Gano Excel debe cambiar de una corporación distante a un socio poderoso y accesible[cite: 333]. [cite_start]Esto disminuye la percepción de riesgo[cite: 334].</p>
+                    <ul>
+                        [cite_start]<li><strong>100% Libre de Deudas:</strong> Es un faro de estabilidad en una economía global apalancada[cite: 338]. [cite_start]Su expansión a más de 65 países se ha hecho sin financiamiento externo[cite: 339].</li>
+                        [cite_start]<li><strong>100% Integración Vertical:</strong> Gano Excel posee y opera todo, desde las plantaciones hasta la distribución[cite: 341]. [cite_start]Esto garantiza control de calidad absoluto "de la espora a la taza"[cite: 342].</li>
+                        [cite_start]<li><strong>Infraestructura como Servicio:</strong> Proporciona oficinas, call centers y logística sin costo para el socio[cite: 343]. [cite_start]En esencia, asumen todos los "chicharrones empresariales"[cite: 345].</li>
+                    </ul>
+                </div>
+                
+                <button class="interactive-trigger" aria-expanded="false">
+                    <span>2.2. La Innovación: "Categoría Propia de Bienestar"</span>
+                    <svg class="icon-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                </button>
+                <div class="interactive-content">
+                    [cite_start]<p>Posicionamos el producto no como una mejora, sino como una categoría nueva sin competencia directa[cite: 352].</p>
+                    <ul>
+                        [cite_start]<li><strong>El Producto Real:</strong> No es café; es el <strong>extracto patentado de Ganoderma Lucidum</strong>, fusionando las 6 variedades más potentes del hongo[cite: 354, 355].</li>
+                        [cite_start]<li><strong>Dominio del Mercado:</strong> Gano Excel controla más del 80% de la producción mundial de Ganoderma Lucidum orgánico, creando un foso competitivo insuperable[cite: 24, 356].</li>
+                        [cite_start]<li><strong>Genialidad del Vehículo:</strong> La innovación se incorpora a un hábito diario existente, eliminando la barrera de adopción del consumidor[cite: 358, 359].</li>
+                    </ul>
+                </div>
+                
+                <button class="interactive-trigger" aria-expanded="false">
+                    <span>2.3. El Modelo: "Franquicia Personal de Alta Palanca"</span>
+                    <svg class="icon-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                </button>
+                <div class="interactive-content">
+                    [cite_start]<p>Adoptamos el lenguaje de modelos de negocio prestigiosos para reconfigurar la percepción del modelo[cite: 367, 368].</p>
+                    <ul>
+                        [cite_start]<li><strong>Franquicia Personal:</strong> Ofrece los beneficios de un sistema probado y marca establecida, pero sin las barreras de entrada económicas de una franquicia tradicional[cite: 369, 370].</li>
+                        [cite_start]<li><strong>Apalancamiento (Leverage):</strong> Es la diferencia entre ganar por el esfuerzo propio (ingreso lineal) y ganar por el esfuerzo de un sistema donde cientos o miles contribuyen a tu volumen de negocio (ingreso apalancado)[cite: 373, 375, 376].</li>
+                        [cite_start]<li><strong>Ingreso Residual:</strong> El objetivo es crear una red de consumidores leales con recompras mensuales[cite: 378]. [cite_start]Cada consumo genera un ingreso pasivo, similar a las regalías o bienes raíces[cite: 379, 380].</li>
+                    </ul>
+                </div>
+
+                <div class="interactive-content is-open" style="padding-top: 2rem;">
+                    <h3 style="color:white; font-weight: 700; margin-top: 0;">El Léxico Libre de Jerga</h3>
+                    [cite_start]<p>Las palabras que usamos crean la realidad en la mente del oyente[cite: 387]. [cite_start]Internalizar este léxico es un paso crítico[cite: 389].</p>
+                    <table class="lexicon-table">
+                        <thead>
+                            <tr>
+                                <th>Término a Evitar</th>
+                                <th>Alternativa Profesional</th>
+                                <th>Marco Positivo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="term-avoid">Multinivel / Red de Mercadeo</td>
+                                <td class="term-professional">Proyecto de Expansión / Franquicia Personal</td>
+                                [cite_start]<td>Asociación estratégica, sistema probado[cite: 391].</td>
+                            </tr>
+                            <tr>
+                                <td class="term-avoid">Reclutar / Fichar</td>
+                                <td class="term-professional">Integrar un Nuevo Socio / Identificar Talento</td>
+                                [cite_start]<td>Exclusividad, desarrollo de negocios[cite: 391].</td>
+                            </tr>
+                             <tr>
+                                <td class="term-avoid">Upline / Downline</td>
+                                <td class="term-professional">Línea de Auspicio / Nuestro Equipo</td>
+                                [cite_start]<td>Mentoría, colaboración, trabajo en equipo[cite: 391].</td>
+                            </tr>
+                            <tr>
+                                <td class="term-avoid">Kit de Inicio</td>
+                                <td class="term-professional">Paquete de Inversión Empresarial (ESP)</td>
+                                [cite_start]<td>Inversión seria, lanzamiento de negocio[cite: 392].</td>
+                            </tr>
+                            <tr>
+                                <td class="term-avoid">Dinerito extra</td>
+                                <td class="term-professional">Generar Ingresos Residuales / Construir un Activo</td>
+                                [cite_start]<td>Construcción de riqueza seria, estrategia financiera[cite: 392].</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div class="module">
+                <div class="module-header">
+                    <h2>Módulo 3: Protocolos de Expansión (El Cómo)</h2>
+                </div>
+                
+                <button class="interactive-trigger" aria-expanded="false">
+                    <span>3.1. Tu Activo Más Valioso: La Historia de Origen</span>
+                    <svg class="icon-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                </button>
+                <div class="interactive-content">
+                    [cite_start]<p>Tu historia personal es tu herramienta de persuasión más potente, estructurada según el "Viaje del Héroe" para resonar profundamente en la psique humana[cite: 397, 399].</p>
+                    
+                    <div style="margin-top: 1rem;">
+                        <button class="interactive-trigger" aria-expanded="false" style="background-color: var(--bg-dark);"><span>1. El Mundo Ordinario</span><svg class="icon-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></button>
+                        [cite_start]<div class="interactive-content"><p>Describe tu vida antes de Gano Excel[cite: 401]. [cite_start]¿Cuál era tu insatisfacción o "miseria inicial" a pesar de tu éxito aparente?[cite: 402]. [cite_start]¿Techo de ingresos, falta de tiempo, inseguridad?[cite: 403]. [cite_start]Este es el punto con el que la audiencia se identifica[cite: 404].</p></div>
+
+                        <button class="interactive-trigger" aria-expanded="false" style="background-color: var(--bg-dark);"><span>2. El Cruce del Umbral</span><svg class="icon-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></button>
+                        [cite_start]<div class="interactive-content"><p>Describe tu escepticismo inicial; esto demuestra que eres racional[cite: 406]. [cite_start]¿Qué te convenció a dar el salto?[cite: 407]. [cite_start]¿La confianza en tu mentor, la visión del potencial, la solidez de la empresa?[cite: 408]. [cite_start]Este momento de decisión es un punto de inflexión[cite: 409].</p></div>
+                        
+                        <button class="interactive-trigger" aria-expanded="false" style="background-color: var(--bg-dark);"><span>3. Las Pruebas, Aliados y Enemigos</span><svg class="icon-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></button>
+                        [cite_start]<div class="interactive-content"><p>Habla de las luchas iniciales: rechazos, dudas[cite: 411]. [cite_start]Esto es fundamental para mostrar vulnerabilidad y hacerte cercano[cite: 412]. [cite_start]Luego, narra las pequeñas victorias: el primer cheque, el primer socio exitoso, el primer viaje[cite: 413].</p></div>
+
+                        <button class="interactive-trigger" aria-expanded="false" style="background-color: var(--bg-dark);"><span>4. La Crisis Central</span><svg class="icon-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></button>
+                        [cite_start]<div class="interactive-content"><p>Toda gran historia tiene un momento de "tocar fondo"[cite: 415]. [cite_start]¿Cuál fue tu mayor desafío, el momento en que casi abandonas?[cite: 416]. [cite_start]Compartir esta vulnerabilidad máxima forja la conexión emocional más fuerte y hace el éxito final más significativo[cite: 417, 418].</p></div>
+
+                        <button class="interactive-trigger" aria-expanded="false" style="background-color: var(--bg-dark);"><span>5. La Recompensa</span><svg class="icon-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></button>
+                        [cite_start]<div class="interactive-content"><p>Describe el momento en que alcanzaste el rango de Diamante[cite: 420]. [cite_start]Habla de lo que significó en términos de libertad, tiempo y reconocimiento, no solo en dinero[cite: 421]. [cite_start]Narra tus experiencias en Malasia como un socio estratégico que verifica la operación, no como un turista[cite: 422].</p></div>
+
+                        <button class="interactive-trigger" aria-expanded="false" style="background-color: var(--bg-dark);"><span>6. El Retorno con el Elixir</span><svg class="icon-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></button>
+                        [cite_start]<div class="interactive-content"><p>La etapa final es tu transformación en líder[cite: 423]. [cite_start]Ya no eres el héroe de tu historia; ahora eres el mentor en la historia de otros[cite: 424]. [cite_start]Tu "elixir" es la oportunidad y la sabiduría que ahora compartes con los demás[cite: 425]. [cite_start]Tu propósito ha cambiado del éxito personal a guiar a otros a su propia libertad[cite: 426].</p></div>
+                    </div>
+                </div>
+
+                <button class="interactive-trigger" aria-expanded="false">
+                    <span>3.2. Proceso de Asociación en 3 Fases</span>
+                    <svg class="icon-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                </button>
+                <div class="interactive-content">
+                     [cite_start]<p>Un enfoque estructurado que guía la interacción desde el primer contacto hasta la incorporación, con cada fase diseñada para un objetivo psicológico específico[cite: 442].</p>
+                     <ul>
+                        [cite_start]<li><strong>FASE 1: La Invitación (Objetivo: Crear Curiosidad).</strong> El guion debe ser breve, profesional y diseñado para abrir una brecha de información[cite: 444]. [cite_start]Evita la jerga, usa un encuadre de alto nivel, aplica escasez y halaga al prospecto[cite: 447, 448, 449, 450].</li>
+                        [cite_start]<li><strong>FASE 2: La Primera Conversación (Objetivo: Construir Confianza).</strong> No es una venta, es un diálogo estratégico de 5 pasos: Conexión, Diagnóstico de Necesidades, Tu Historia de Origen, El Marco de la Oportunidad y la Invitación al Siguiente Paso[cite: 459, 460].</li>
+                        [cite_start]<li><strong>FASE 3: El Arranque Explosivo (Objetivo: Validar la Decisión).</strong> Los primeros 30 días son críticos[cite: 476]. [cite_start]El objetivo es ayudar al nuevo socio a <strong>Cobrar</strong> (ganar su primer cheque), <strong>Consumir</strong> (ser producto del producto) y <strong>Capacitarse</strong> (integrarse al sistema)[cite: 478, 480, 483, 485].</li>
+                     </ul>
+                </div>
+
+                <button class="interactive-trigger" aria-expanded="false">
+                    <span>3.3. Reconfiguración de Objeciones</span>
+                    <svg class="icon-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                </button>
+                 <div class="interactive-content">
+                    [cite_start]<p>La técnica no es debatir, sino <strong>aceptar, validar y reconfigurar</strong> la objeción hacia un marco más favorable[cite: 507].</p>
+                    <p><strong>Objeción: "Eso suena como un esquema piramidal".</strong></p>
+                    <p><strong>Respuesta de Reconfiguración Estratégica:</strong></p>
+                    [cite_start]<p style="border-left: 4px solid var(--accent); padding-left: 1rem; color: var(--text-primary);"><em>"Entiendo perfectamente por qué lo preguntas. De hecho, la apariencia de la estructura es una de las razones por las que yo mismo evité modelos similares durante años. Lo que me hizo analizar este en particular fue descubrir que es fundamentalmente un modelo de distribución, muy parecido al que utilizan empresas como Uber o Airbnb... El 100% de los ingresos se genera únicamente cuando un cliente final compra un producto. La pregunta clave para mí no fue sobre la estructura, sino sobre el resultado: ¿es interesante la idea de construir un activo que genere ingresos residuales de un canal de distribución global?"</em> [cite: 511]</p>
+                    <p><strong>Análisis de la respuesta:</strong> 1) Valida la preocupación. 2) Se une a ellos. 3) Reconfigura con analogías de alto estatus (Uber). 4) Establece legitimidad. [cite_start]5) Pivota la conversación de vuelta al beneficio central[cite: 513, 514, 515, 516, 517].</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Selecciona todos los triggers de acordeón, incluyendo los anidados
+            const triggers = document.querySelectorAll('.interactive-trigger');
+
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', function () {
+                    const content = this.nextElementSibling;
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+                    // Actualiza el estado del trigger clickeado
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    this.classList.toggle('active');
+                    
+                    // Anima el contenido
+                    if (content.style.maxHeight) {
+                        // Si ya está abierto, lo cierra
+                        content.style.maxHeight = null;
+                        content.classList.remove('is-open');
+                    } else {
+                        // Si está cerrado, lo abre
+                        content.classList.add('is-open');
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

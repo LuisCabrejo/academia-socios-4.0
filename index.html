@@ -37,26 +37,35 @@
         /* ========== ESTRUCTURA Y CONTENEDORES ========== */
         .container { width: 100%; max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
         .header { text-align: center; padding-bottom: 3rem; border-bottom: 1px solid var(--border-light); }
-        .header h1 { font-size: clamp(2.2rem, 6vw, 3.5rem); font-weight: 900; letter-spacing: -0.03em; color: white; margin: 0; }
-        .header .subtitle { font-size: clamp(1rem, 4vw, 1.2rem); color: var(--text-secondary); max-width: 650px; margin: 1rem auto 0 auto; }
+        .header h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900; letter-spacing: -0.03em; color: white; margin: 0; }
+        .header .subtitle { font-size: clamp(1rem, 2.5vw, 1.2rem); color: var(--text-secondary); max-width: 650px; margin: 1rem auto 0 auto; }
         .module { margin-top: 3rem; background-color: var(--primary); border-radius: 24px; border: 1px solid var(--border-light); box-shadow: var(--shadow-strong); overflow: hidden; }
         .module-header { padding: 1.5rem 2rem; border-bottom: 1px solid var(--border-light); }
         .module-header h2 { font-size: 1.8rem; font-weight: 800; color: white; margin: 0; }
 
         /* ========== COMPONENTE INTERACTIVO DESPLEGABLE (ACORDEÓN) ========== */
         .interactive-trigger { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 1.25rem; background-color: transparent; border: none; border-bottom: 1px solid var(--border-light); color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; text-align: left; cursor: pointer; transition: background-color 0.3s ease; }
-        .interactive-trigger span { flex-grow: 1; }
         .interactive-trigger:hover { background-color: var(--accent-light); }
+        .interactive-trigger:last-of-type { border-bottom: none; }
         .icon-toggle { width: 24px; height: 24px; flex-shrink: 0; margin-left: 1rem; transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); color: var(--accent); }
         .interactive-trigger.active .icon-toggle { transform: rotate(45deg); }
         .interactive-content { max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.5s ease-out, opacity 0.4s ease-out, padding 0.5s ease-out; background-color: var(--bg-dark); font-size: 1rem; color: var(--text-secondary); }
         .interactive-content.is-open { opacity: 1; max-height: 2000px; padding: 1.5rem 2rem; border-bottom: 1px solid var(--border-light); }
-        .interactive-content p, .interactive-content ul { margin-top: 0; margin-bottom: 1em; word-wrap: break-word; }
+        .interactive-content p, .interactive-content ul { margin-top: 0; margin-bottom: 1em; }
         .interactive-content strong { color: var(--text-primary); font-weight: 600; }
         .interactive-content ul { padding-left: 1.5rem; list-style-type: '✓ '; }
 
         /* ========== CITA INTERACTIVA Y MODAL ========== */
-        .cite-trigger { font-size: 0.8rem; font-weight: 700; color: var(--accent); cursor: pointer; border-bottom: 1px dotted var(--accent); transition: color 0.2s, background-color 0.2s; padding: 1px 3px; border-radius: 3px; }
+        .cite-trigger {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            cursor: pointer;
+            border-bottom: 1px dotted var(--accent);
+            transition: color 0.2s, background-color 0.2s;
+            padding: 1px 3px;
+            border-radius: 3px;
+        }
         .cite-trigger:hover { background-color: var(--accent-light); color: white; }
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(10, 20, 33, 0.8); backdrop-filter: blur(5px); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 1rem; opacity: 0; transition: opacity 0.3s ease; }
         .modal-overlay.is-visible { display: flex; opacity: 1; }
@@ -68,18 +77,6 @@
         .modal-close-btn:hover { color: white; }
         .modal-content { font-size: 1rem; line-height: 1.6; color: var(--text-secondary); }
         .modal-content blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; margin-left: 0; font-style: italic; }
-        
-        /* ========== REGLAS PARA RESPONSIVIDAD MÓVIL ========== */
-        @media screen and (max-width: 768px) {
-            .container { padding: 2rem 1rem; }
-            .header h1 { font-size: 1.8rem; }
-            .header .subtitle { font-size: 1rem; }
-            .module-header h2 { font-size: 1.5rem; }
-            .interactive-trigger { font-size: 1rem; padding: 1rem; }
-            .interactive-content { font-size: 0.95rem; padding: 1.5rem 1rem;}
-            .interactive-content.is-open { padding: 1.5rem 1rem;}
-            .modal-box { padding: 1.5rem; }
-        }
     </style>
 </head>
 <body>
@@ -93,33 +90,38 @@
         <main>
             <div class="module">
                 <div class="module-header">
-                    <h2>Módulo 1: La Arquitectura de la Confianza (El Porqué)</h2>
+                    <h2>Módulo 3: Protocolos de Expansión (El Cómo)</h2>
                 </div>
                 
-                <button class="interactive-trigger">
-                    <span>1.1. Decodificando el Cerebro: Emoción > Lógica</span>
+                <button class="interactive-trigger" aria-expanded="false">
+                    <span>3.1. Tu Activo Más Valioso: La Historia de Origen</span>
                     <svg class="icon-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
                 </button>
                 <div class="interactive-content">
-                    <p>El paradigma fundamental es que las decisiones humanas, especialmente las que implican confianza e inversión, no son puramente racionales<span class="cite-trigger" data-cite-id="7">7</span>. Son validaciones emocionales que justificamos con lógica después<span class="cite-trigger" data-cite-id="8">8</span>. La percepción negativa del "multinivel" es una barrera emocional<span class="cite-trigger" data-cite-id="10">10</span>, y tratar de superarla con datos es como <strong>"llevar una hoja de cálculo a una batalla de percepciones"</strong><span class="cite-trigger" data-cite-id="12">12</span>.</p>
-                    <p><strong>Herramienta de Poder: La Narrativa.</strong> Las historias son potentes porque desencadenan empatía a través de "neuronas espejo" y suprimen las defensas del prospecto contra la persuasión<span class="cite-trigger" data-cite-id="15">15</span>, <span class="cite-trigger" data-cite-id="16">16</span>, <span class="cite-trigger" data-cite-id="175">175</span>, <span class="cite-trigger" data-cite-id="176">176</span>, <span class="cite-trigger" data-cite-id="177">177</span>. Esto crea "acoplamiento neural", donde el cerebro del oyente se sincroniza con el del narrador<span class="cite-trigger" data-cite-id="17">17</span>.</p>
+                    <p>Tu historia personal es tu herramienta de persuasión más potente<span class="cite-trigger" data-cite-id="236">236</span>, estructurada según el "Viaje del Héroe" para resonar profundamente en la psique humana<span class="cite-trigger" data-cite-id="238">238</span>, <span class="cite-trigger" data-cite-id="63">63</span>.</p>
+                    
+                    <div style="margin-top: 1rem;">
+                        <button class="interactive-trigger" aria-expanded="false" style="background-color: var(--bg-dark);"><span>1. El Mundo Ordinario</span><svg class="icon-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></button>
+                        <div class="interactive-content"><p>Describe tu vida antes de Gano Excel<span class="cite-trigger" data-cite-id="240">240</span>. ¿Cuál era tu insatisfacción o "miseria inicial"<span class="cite-trigger" data-cite-id="241">241</span>, <span class="cite-trigger" data-cite-id="63">63</span>? ¿Techo de ingresos, falta de tiempo, monotonía o inseguridad económica<span class="cite-trigger" data-cite-id="242">242</span>? Este es el punto con el que la audiencia se identifica<span class="cite-trigger" data-cite-id="243">243</span>.</p></div>
+
+                        <button class="interactive-trigger" aria-expanded="false" style="background-color: var(--bg-dark);"><span>2. El Cruce del Umbral</span><svg class="icon-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></button>
+                        <div class="interactive-content"><p>Describe tu escepticismo inicial; esto demuestra que eres racional y no crédulo<span class="cite-trigger" data-cite-id="245">245</span>. ¿Qué te convenció a dar el salto<span class="cite-trigger" data-cite-id="246">246</span>? ¿La confianza en tu mentor, la visión del potencial o la solidez de la empresa<span class="cite-trigger" data-cite-id="247">247</span>? Este momento de decisión es un punto de inflexión dramático<span class="cite-trigger" data-cite-id="248">248</span>.</p></div>
+                        
+                        <button class="interactive-trigger" aria-expanded="false" style="background-color: var(--bg-dark);"><span>3. Las Pruebas, Aliados y Enemigos</span><svg class="icon-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></button>
+                        <div class="interactive-content"><p>Habla de las luchas iniciales: rechazos, dudas<span class="cite-trigger" data-cite-id="250">250</span>. Esto es fundamental para mostrar vulnerabilidad y hacerte cercano<span class="cite-trigger" data-cite-id="251">251</span>, <span class="cite-trigger" data-cite-id="66">66</span>. Luego, narra las pequeñas victorias que te mantuvieron en el camino: el primer cheque, el primer socio exitoso, el primer viaje ganado<span class="cite-trigger" data-cite-id="252">252</span>.</p></div>
+
+                        <button class="interactive-trigger" aria-expanded="false" style="background-color: var(--bg-dark);"><span>4. La Crisis Central</span><svg class="icon-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></button>
+                        <div class="interactive-content"><p>Toda gran historia tiene un momento de "tocar fondo"<span class="cite-trigger" data-cite-id="254">254</span>, <span class="cite-trigger" data-cite-id="63">63</span>. ¿Cuál fue tu mayor desafío? ¿Un momento en que estuviste a punto de abandonar<span class="cite-trigger" data-cite-id="255">255</span>? Compartir esta vulnerabilidad máxima es lo que forja la conexión emocional más fuerte<span class="cite-trigger" data-cite-id="256">256</span>.</p></div>
+
+                        <button class="interactive-trigger" aria-expanded="false" style="background-color: var(--bg-dark);"><span>5. La Recompensa</span><svg class="icon-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></button>
+                        <div class="interactive-content"><p>Describe el momento en que alcanzaste el rango de Diamante<span class="cite-trigger" data-cite-id="259">259</span>. Habla de lo que significó en términos de libertad, tiempo y reconocimiento<span class="cite-trigger" data-cite-id="260">260</span>. Narra tus experiencias en Malasia y Singapur, no como un turista, sino como un socio estratégico que verifica la operación<span class="cite-trigger" data-cite-id="261">261</span>.</p></div>
+
+                        <button class="interactive-trigger" aria-expanded="false" style="background-color: var(--bg-dark);"><span>6. El Retorno con el Elixir</span><svg class="icon-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></button>
+                        <div class="interactive-content"><p>La etapa final es tu transformación en líder<span class="cite-trigger" data-cite-id="262">262</span>. Ya no eres el héroe de tu propia historia; ahora eres el mentor en la historia de otros<span class="cite-trigger" data-cite-id="263">263</span>. Tu "elixir" es la oportunidad y la sabiduría que ahora puedes compartir<span class="cite-trigger" data-cite-id="264">264</span>.</p></div>
+                    </div>
                 </div>
 
-                <button class="interactive-trigger">
-                    <span>1.2. La Neurociencia de la Confianza: Generando Oxitocina</span>
-                    <svg class="icon-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
-                </button>
-                <div class="interactive-content">
-                    <p>La confianza no es abstracta, es un estado biológico medible<span class="cite-trigger" data-cite-id="22">22</span>, <span class="cite-trigger" data-cite-id="183">183</span>. El neuroeconomista Paul J. Zak identificó la <strong>Oxitocina</strong> como la "hormona de la confianza"<span class="cite-trigger" data-cite-id="23">23</span>, <span class="cite-trigger" data-cite-id="184">184</span>. Su liberación en el cerebro reduce el miedo natural a confiar, lo que la convierte en nuestro objetivo neuroquímico más importante<span class="cite-trigger" data-cite-id="24">24</span>, <span class="cite-trigger" data-cite-id="185">185</span>.</p>
-                    <p><strong>Disparadores Éticos de Oxitocina:</strong></p>
-                    <ul>
-                        <li><strong>Narrativa Empática:</strong> Historias poderosas que muestran vulnerabilidad y superación son un desencadenante directo de oxitocina<span class="cite-trigger" data-cite-id="28">28</span>, <span class="cite-trigger" data-cite-id="189">189</span>.</li>
-                        <li><strong>Autenticidad y Consistencia:</strong> La honestidad y la coherencia en el mensaje crean un entorno de seguridad psicológica<span class="cite-trigger" data-cite-id="32">32</span>, <span class="cite-trigger" data-cite-id="194">194</span>.</li>
-                        <li><strong>Gestos de Generosidad:</strong> Ofrecer valor sin compromiso activa el principio de reciprocidad y fomenta la confianza<span class="cite-trigger" data-cite-id="33">33</span>, <span class="cite-trigger" data-cite-id="195">195</span>.</li>
-                    </ul>
                 </div>
-
-                 </div>
         </main>
     </div>
 
@@ -138,22 +140,82 @@
     <script>
         // ========= BASE DE DATOS DE CITAS (VERSIÓN COMPLETA) =========
         const CITE_DATA = {
-            '1': 'Una Decisión Inteligente: Transforme el Hábito Más Consumido del Mundo en su Activo Financiero Más Sólido', '2': 'Descubra cómo una taza de café puede ser la respuesta a la salud y la riqueza en la economía actual.', '3': 'CARA A: LA OPORTUNIDAD GLOBAL Y EL VEHÍCULO ÚNICO', '4': 'El Momento es Ahora: Dos Megatendencias, Una Sola Oportunidad', '5': 'Vivimos en una era de cambios sin precedentes. Dos fuerzas poderosas están redefiniendo nuestro futuro, y en su intersección, nace una oportunidad extraordinaria.', '6': '1. La Nueva Realidad Económica: La inflación, la inestabilidad laboral y la creciente incertidumbre han demostrado que depender de una única fuente de ingresos es el mayor riesgo financiero.', '7': 'Millones de personas buscan activamente formas inteligentes de generar ingresos adicionales, diversificar su portafolio y construir un patrimonio seguro que no dependa de un jefe o un horario fijo.', '8': 'La búsqueda de libertad financiera ya no es un lujo, es una necesidad.', '9': '2. La Revolución del Bienestar: Simultáneamente, la salud se ha convertido en la prioridad número uno a nivel mundial.', '10': 'La industria del bienestar, valorada en trillones de dólares, experimenta un crecimiento exponencial.', '11': 'Los consumidores de hoy son más conscientes y exigen productos que no solo satisfagan una necesidad, sino que aporten un valor real a su calidad de vida, invirtiendo en nutrición y prevención.3', '12': 'Gano Excel se posiciona magistralmente en el epicentro de estas dos megatendencias.', '13': 'Ofrecemos bienestar real a través de productos de consumo masivo y, al mismo tiempo, un vehículo de negocio robusto, probado y diseñado para', '14': 'prosperar en la economía digital y global.', '15': 'El Modelo de Negocio Inteligente: Gano Excel vs. Emprendimiento Tradicional','16': 'Antes de emprender, es crucial analizar el vehículo. Un negocio tradicional está cargado de riesgos y barreras que la mayoría no puede superar.','17': 'Gano Excel ofrece un modelo de negocio superior, eliminando los obstáculos y maximizando su potencial de éxito.','18': 'Emprendimiento Tradicional: ALTA INVERSIÓN, ALTOS COSTOS OPERATIVOS, ALTO RIESGO FINANCIERO, MERCADO LIMITADO Y LOCAL, COMPETENCIA FEROZ.', '19': 'Nuestro Diferenciador Absoluto: El Primer Café Saludable del Mundo', '20': 'La genialidad de Gano Excel no solo reside en su modelo de negocio, sino en su producto revolucionario.', '21': 'No le pedimos a la gente que cree nuevos hábitos; mejoramos los que ya tienen y aman.', '22': '• El Secreto: Ganoderma Lucidum Patentado', '23': '•', '24': 'Gano Excel es el productor de más del 80% del Ganoderma lucidum a nivel mundial.13 Nuestro fundador, el Sr. Leow Soon Seng, dedicó años de investigación para desarrollar un extracto patentado con dos características únicas que nos hacen inigualables:', '25': '1. Fusión de las 6 Variedades Más Potentes: Somos los únicos en el mundo', '26': 'que hemos logrado fusionar el extracto de las seis variedades más potentes del hongo Ganoderma lucidum, creando un superalimento con un espectro de nutrientes sinérgico y superior.', '27': '14', '28': '2. Extracto 100% Hidrosoluble: Nuestra tecnología patentada de extracción nos permite crear un polvo de Ganoderma lucidum que es completamente soluble en agua, aceite y alcohol.', '29': 'Esto garantiza que sus más de 200 fitonutrientes y 150 antioxidantes se integren perfectamente en bebidas frías o calientes, maximizando la absorción y la biodisponibilidad para el cuerpo.', '30': '17 Beneficios Clave para un Bienestar Integral', '31': 'Nuestro Ganoderma lucidum es un poderoso adaptógeno, un nutriente que apoya al cuerpo en su búsqueda de equilibrio.', '32': 'Miles de estudios científicos disponibles en plataformas como PubMed respaldan los componentes del Ganoderma lucidum.18 Su consumo regular apoya al organismo a:', '33': 'Fortalecer el sistema inmunológico.19', '34': 'Aumentar los niveles de energía y combatir la fatiga. 21', '35': '0 Modular la respuesta del cuerpo al estrés físico y mental.3', '36': 'Promover un equilibrio general en los diferentes sistemas del cuerpo. 18', '37': 'Una Plataforma Completa de Bienestar', '38': 'Introducimos este poderoso extracto en una amplia gama de productos de consumo diario: café gourmet, chocolate, cereal con espirulina, té, suplementos y productos de cuidado personal.2', '39': 'La Evolución del Consumo: Presentamos LUVOCO', '40': 'Llevamos la experiencia del café saludable a un nivel superior con Luvoco, nuestro sistema de café premium en cápsulas, enriquecido con betaglucanos de Ganoderma lucidum.', '41': 'Luvoco representa la siguiente fase en la construcción de su red de consumo, ofreciendo calidad, conveniencia y sofisticación para hogares y', '42': 'oficinas, y consolidando un ingreso residual estable y creciente.23', '43': 'CARA B: EL PLAN DE ACCIÓN Y SU POTENCIAL DE RIQUEZA', '44': 'Construir su Propio Negocio Global Nunca Fue Tan Sencillo', '45': 'El éxito en Gano Excel se basa en un sistema probado y duplicable. No necesita ser un experto en ventas;', '46': 'solo necesita seguir tres pasos simples que cualquiera puede aprender y enseñar.', '47': '•', '48': '•', '49': '• PASO 1: CONSUMA Y CONÉCTESE', '50': 'El primer paso es convertirse en producto del producto. Elija el Paquete Empresarial (ESP) que mejor se adapte a sus metas y comience a experimentar personalmente los beneficios del Ganoderma lucidum.', '51': 'Su propio testimonio es la herramienta más poderosa.25', '52': 'PASO 2: COMPARTA LA VISIÓN', '53': 'No se trata de vender, se trata de compartir. De manera natural, cuéntele a otras personas sobre su experiencia con los productos y la oportunidad de negocio inteligente que ha descubierto.', '54': 'Nuestro sistema de capacitación le enseñará cómo comunicar la visión de manera efectiva y profesional.10', '55': 'PASO 3: CONSTRUYA Y GANE', '56': 'Forme dos equipos de trabajo, uno a su izquierda y otro a su derecha.', '57': 'A medida que usted y su equipo comparten la oportunidad, su red de consumidores y distribuidores comienza a crecer.', '58': 'Usted gana un porcentaje de todas las compras que se realizan en su organización, sin límite de profundidad.', '59': 'Su trabajo es liderar, apoyar y enseñar a otros a seguir estos mismos tres pasos.28', '60': 'Las 12 Formas de Ganar: Su Escalera a la Libertad Financiera', '61': 'Nuestro Plan de Compensación Binario Híbrido Progresivo es reconocido como uno de los más lucrativos y justos de la industria.', '62': 'Está diseñado para recompensarle en', '63': 'cada etapa de su crecimiento, repartiendo hasta el 50% de los ingresos por ventas en comisiones para nuestros distribuidores.', '64': '28 A continuación, un resumen de su trayectoria de ingresos:', '65': 'El Modelo Gano Excel: BAJA INVERSIÓN, CERO COSTOS OPERATIVOS, CERO RIESGO FINANCIERO, NEGOCIO GLOBAL SIN FRONTERAS, SISTEMA COLABORATIVO Y DE APOYO.', '66': 'Plan de Compensación - ETAPA 1: ARRANQUE EXPLOSIVO. TIPO: Ganancias Inmediatas (Pago Semanal). CÓMO SE GENERA: Venta Directa y Bono de Inicio Rápido (Gen 5) de hasta $150 USD. OBJETIVO: ¡COBRE EN SU PRIMERA SEMANA! y recupere su inversión.', '67': 'Plan de Compensación - ETAPA 2: CONSTRUCCIÓN DE EQUIPO. TIPO: Ingresos a Corto/Mediano Plazo (Pago Semanal). CÓMO SE GENERA: Comisiones de Equipo Binario (hasta el 17%) y Bono Superestrella. OBJETIVO: CREE UN INGRESO SEMANAL CONSISTENTE.', '68': 'Plan de Compensación - ETAPA 3: LIDERAZGO Y EXPANSIÓN. TIPO: Ingresos Residuales a Largo Plazo. CÓMO SE GENERA: Bonos de Liderazgo y Fondos Globales. OBJETIVO: CONSTRUYA UN ACTIVO HEREDABLE.'
-            // LA BASE DE DATOS COMPLETA SE EXTIENDE HASTA LA CITA 662.
-            // POR BREVEDAD, SE OMITE EL RESTO, PERO ESTA VERSIÓN FINAL CONTIENE TODO.
+        '1': 'El Plan Maestro de Asociación: Un Marco Estratégico para la Expansión de Negocios de Alto Impacto',
+        '2': 'Parte I: La Arquitectura Psicológica del "Sí"',
+        '3': 'Esta primera parte establece el fundamento científico de toda la estrategia.',
+        '4': 'Se trascenderán las "tácticas" de marketing para adentrarse en los impulsores centrales del comportamiento humano, creando una base racional inquebrantable para el marco de comunicación que se desarrollará en las Partes II y III.',
+        '5': 'Sección 1: Decodificando el Cerebro Decisorio',
+        '6': '1.1. Más Allá de la Lógica: La Primacía de la Emoción en Decisiones de Alto Riesgo',
+        '7': 'El paradigma fundamental que debe guiar cualquier estrategia de persuasión de alto nivel es el reconocimiento de que las decisiones humanas, especialmente aquellas que implican confianza, compromiso futuro e inversión personal, no son el resultado de un cálculo racional.',
+        '8': 'Son, en esencia, validaciones emocionales que posteriormente se justifican con la lógica.',
+        '9': 'La neurociencia moderna y el neuromarketing han demostrado de manera concluyente que la toma de decisiones humanas no es puramente racional, sino que está "profundamente arraigada en las emociones y los procesos subconscientes".',
+        '10': 'El principal obstáculo identificado -la percepción negativa y la "baja asociación" con el concepto de "multinivel" - es una barrera eminentemente emocional, no lógica.',
+        '11': 'Intentar superarla con datos y argumentos lógicos es, por lo tanto, una estrategia fundamentalmente defectuosa.',
+        '12': 'Equivale a llevar una hoja de cálculo a una batalla de percepciones.',
+        '13': 'El objetivo estratégico no es ganar un debate, sino inducir un estado emocional completamente nuevo y positivo en el prospecto.',
+        '14': 'La investigación en neuromarketing revela que las historias y narrativas son una herramienta de una potencia excepcional para lograr este fin.',
+        '15': 'Los estudios demuestran que las historias pueden desencadenar empatía en el oyente a través de un sistema de "neuronas espejo", permitiéndole experimentar las mismas emociones que los personajes de la historia.',
+        '16': 'A medida que el prospecto se sumerge en la narrativa, sus defensas habituales contra la persuasión se suprimen, haciéndolo más receptivo al mensaje.',
+        '17': 'Este fenómeno, conocido como "acoplamiento neural", hace que el cerebro del oyente se sincronice con el del narrador, creando una sensación de experiencia compartida.³',
+        '18': 'Por lo tanto, la aplicación práctica es clara: el acercamiento inicial a un prospecto debe estar diseñado para eludir el centro de "lógica y escepticismo" del cerebro y, en su lugar, activar los centros emocionales y narrativos.',
+        '19': 'La conversación no debe comenzar con "qué" es el negocio o "cómo" funciona, sino con "quién" es usted y "por qué" esta oportunidad es significativa.',
+        '20': 'La primera impresión no debe ser la de un vendedor, sino la de un narrador y un líder visionario que invita a otro a ser parte de una historia convincente.',
+        '21': '1.2. La Neurociencia de la Confianza: Desencadenando Oxitocina para Superar el Escepticismo',
+        '22': 'La confianza no es un concepto abstracto, sino un estado biológico medible.',
+        '23': 'El neuroeconomista Paul J. Zak identificó la oxitocina como la molécula responsable de este estado, denominándola la "hormona de la confianza".',
+        '24': 'La liberación de oxitocina en el cerebro reduce el miedo natural a confiar en un extraño, lo que la convierte en el objetivo neuroquímico más importante para este marco de comunicación.',
+        '25': 'Cuando las personas se sienten seguras y conectadas, sus cerebros liberan oxitocina, lo que las hace más propensas a cooperar y confiar.2',
+        '26': 'La pregunta estratégica es, entonces, ¿cómo se puede inducir de manera ética y predecible la liberación de oxitocina en un contexto de negocios?',
+        '27': 'La investigación proporciona una hoja de ruta clara:',
+        '28': '1. Narrativa Empática: Las historias poderosas que inspiran empatía son un desencadenante directo de la oxitocina.',
+        '29': 'Una narrativa personal que muestra vulnerabilidad, lucha y superación permite al oyente conectar emocionalmente, activando las neuronas espejo y, en consecuencia, la producción de oxitocina.',
+        '30': 'Esto valida científicamente la intuición de que "las personas inician por confianza hacia quien le presenta la oportunidad".',
+        '31': '2. Autenticidad y Consistencia: La confianza es frágil. Para construirla, es fundamental mostrar autenticidad, ser honesto sobre lo que la oportunidad puede y no puede hacer, y mantener una coherencia en el mensaje y la marca personal.',
+        '32': 'Estas acciones crean un entorno de seguridad psicológica que fomenta la liberación de oxitocina.3',
+        '33': '3. Gestos de Generosidad: Pequeños actos de generosidad, como ofrecer una consulta sin compromiso o compartir conocimientos valiosos, activan el principio de reciprocidad y también pueden fomentar la confianza.',
+        '34': 'La aplicación de estos principios es directa. La narrativa personal, estructurada correctamente para revelar no solo los éxitos sino también los desafíos iniciales, se convierte en una potente herramienta bioquímica.',
+        '35': 'No se trata de una simple biografía, sino de una secuencia de eventos diseñada para generar una conexión humana genuina, sentando las bases de la confianza antes de que se presente cualquier detalle del negocio.',
+        '36': '1.3. Las 7 Palancas de Influencia de Cialdini: Una Aplicación Estratégica para el Reclutamiento de Alta Confianza',
+        '37': 'Los principios de influencia de Robert Cialdini no deben ser vistos como tácticas de manipulación, sino como "atajos" cognitivos que el cerebro humano utiliza para tomar decisiones de manera más eficiente.',
+        '38': 'En un mundo saturado de información, estos atajos son esenciales.',
+        '39': 'El objetivo es alinear éticamente la presentación de la oportunidad con estos procesos mentales naturales para facilitar una decisión positiva.',
+        '40': '• Autoridad y Simpatía (Liking): Estas son las dos palancas primordiales en este contexto.',
+        '41': 'Su estatus de Diamante, sus 11 años de experiencia, sus viajes a las instalaciones de Malasia y sus 30 años de trayectoria comercial establecen una Autoridad innegable.',
+        '42': 'La clave es presentar estas credenciales no como un acto de jactancia, sino como prueba de su debida diligencia y compromiso.',
+        '43': 'La Simpatía se genera al encontrar puntos en común, ser cercano y demostrar un interés genuino en las necesidades del prospecto.',
+        '44': '10 La gente prefiere decir "sí" a las personas que conoce y le agradan.',
+        '45': '• Prueba Social (Social Proof): Este principio es crucial para neutralizar la objeción "¿Es esto legítimo?".',
+        '46': 'El cerebro humano tiene una tendencia innata a seguir a la multitud, ya que es un instinto de supervivencia: si muchos lo hacen, debe ser seguro.',
+        '47': 'La presentación debe destacar sistemáticamente la prueba social: la existencia de más de 90 millones de participantes a nivel mundial 13, los testimonios de éxito de su propio equipo y la presencia física y legal de la compañía en más de 65 países.14 Esto crea una sensación de "mentalidad de rebaño" que transmite seguridad y éxito.',
+        '48': 'Reciprocidad: El acto de dar algo de valor primero crea una obligación social subconsciente de devolver el favor.',
+        '49': 'En este marco, el "regalo" inicial es su tiempo, su experiencia y la oferta de una "mirada exclusiva" a un proyecto de expansión de alto nivel.',
+        '50': 'Esto no es una simple presentación de ventas; es una consulta estratégica ofrecida a un individuo selecto.',
+        '51': 'Este posicionamiento genera una deuda psicológica que se paga con una escucha atenta y abierta.',
+        '52': 'Compromiso y Coherencia: Las personas tienen un profundo deseo de ser coherentes con sus declaraciones y compromisos previos.',
+        '53': 'La estrategia aquí es diseñar una secuencia de preguntas que obtenga pequeños "síes" del prospecto.',
+        '54': 'Por ejemplo: "¿Estar de acuerdo en que depender de una sola fuente de ingresos es cada vez más arriesgado en la economía actual?".',
+        '55': 'Una vez que una persona ha afirmado una creencia, es más probable que acepte una oportunidad que sea coherente con esa creencia.',
+        '56': '• Escasez: Este principio debe aplicarse con extrema sutileza y ética.',
+        '57': 'La oportunidad de Gano Excel no es escasa, pero la oportunidad de asociarse directamente con usted, un lider Diamante con un historial probado, en este momento específico de expansión por América, sí lo es.',
+        '58': 'El recurso escaso es usted y su mentoría personal. Este encuadre cambia la dinámica de poder: no está tratando de venderles algo, sino que les está ofreciendo una oportunidad limitada de trabajar con un experto.',
+        '59': '• Unidad: Este es el principio más profundo de Cialdini, que se refiere a la identidad compartida.',
+        '60': 'El lenguaje debe crear un sentido de "nosotros".5 Frases como "nosotros, como emprendedores, buscamos..." o "para personas como nosotros, que valoran la independencia financiera..." crean un vínculo que trasciende la transacción.',
+        '61': 'Se enmarca la conversación no como un individuo vendiendo a otro, sino como dos miembros de la misma tribu explorando una meta compartida.',
+        '62': '1.4. La Brecha de Curiosidad: Diseñando la Respuesta "¿Y ahora qué?"',
+        '63': 'El objetivo final de la fase inicial de comunicación es que el prospecto pregunte: "Me interesa, ¿qué hay que hacer?".',
+        // This is a truncated example. A full implementation would contain all 662 entries.
         };
 
         document.addEventListener('DOMContentLoaded', function () {
-            
-            // Lógica del Acordeón
             const accordionTriggers = document.querySelectorAll('.interactive-trigger');
             accordionTriggers.forEach(trigger => {
-                trigger.addEventListener('click', function (e) {
-                    // Evita que el evento de clic se propague a los acordeones padres
-                    e.stopPropagation();
+                trigger.addEventListener('click', function () {
                     const content = this.nextElementSibling;
-                    this.classList.toggle('active');
-                    if (content.style.maxHeight) {
+                    const isExpanded = this.classList.contains('active');
+
+                    this.classList.toggle('active', !isExpanded);
+                    
+                    if (isExpanded) {
                         content.style.maxHeight = null;
                         content.classList.remove('is-open');
                     } else {
@@ -163,7 +225,6 @@
                 });
             });
 
-            // Lógica del Modal de Citas
             const modalOverlay = document.getElementById('citation-modal');
             const modalTitle = document.getElementById('modal-title');
             const modalContent = document.getElementById('modal-content');
@@ -175,6 +236,8 @@
                     modalTitle.innerText = `Referencia de la Cita [${citeId}]`;
                     modalContent.innerHTML = `<blockquote>"${citationText}"</blockquote>`;
                     modalOverlay.classList.add('is-visible');
+                } else {
+                    console.warn(`Cita no encontrada para el ID: ${citeId}`);
                 }
             }
 
@@ -190,11 +253,15 @@
             });
 
             closeModalBtn.addEventListener('click', closeModal);
-            modalOverlay.addEventListener('click', (event) => {
-                if (event.target === modalOverlay) closeModal();
+            modalOverlay.addEventListener('click', function(event) {
+                if (event.target === modalOverlay) {
+                    closeModal();
+                }
             });
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape') closeModal();
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && modalOverlay.classList.contains('is-visible')) {
+                    closeModal();
+                }
             });
         });
     </script>
